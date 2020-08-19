@@ -8,21 +8,30 @@ namespace HelloWorld
     {
         public void Run()
         {
-            float health = 100.0f;
-            float healthRegen = 20;
             Console.Write("What is your name traveler?");
             string name = Console.ReadLine();
-            Console.WriteLine("Is this your name?");
-            Console.ReadLine();
+            //This variable is for health
+            float health = 100.0f;
+            //This value is for how much a player regens
+            float healthRegen = 20;
+            //Role choices for start!
+            Console.WriteLine("Ah so you are " + name + "! What will your class be?");
+            Console.WriteLine("Here are your choices:");
+            Console.WriteLine("Rogue, Druid, Knight, Wizard, Alchemist");
+            string role = Console.ReadLine();
+
+            //Starting and max level values
             bool maxLevelReached = false;
             int maxlevel = 100;
-            maxlevel = 120;
-            int level = maxlevel;
+            int level = 1;
             bool ready = true;
-            Console.WriteLine(health);
-            health = health + healthRegen;
-         
-            Console.Write(name + " has healed " + healthRegen);
+
+            //The player stats, name, and role selected
+            Console.WriteLine("Player Name: " + name);
+            Console.WriteLine("Player Role: " + role);
+            Console.WriteLine("Player Health: " + health);
+            Console.WriteLine("Player Level: " + level);
+
             
         
         }
