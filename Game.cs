@@ -162,13 +162,14 @@ namespace HelloWorld
             Console.WriteLine("Press 2 to ignore and walk away");
             Console.WriteLine();
             char bountyone = Console.ReadKey().KeyChar;
+            Console.WriteLine();
             if (bountyone == '1')
             {
                 Console.WriteLine("You walk up and listen to a old man waving a flyer");
                 Console.WriteLine("He claims there is a dangerous Rogue that needs to be stopped");
                 Console.WriteLine("He hands you a bounty with a picture of a elf and a reward of 500 coins");
                 Console.WriteLine("The last seen location was at Dry Rock a few miles from here! Better start" +
-                    "moving!");
+                    " moving!");
             }
              else 
             {
@@ -176,6 +177,24 @@ namespace HelloWorld
             }
 
 
+            //First CrossRoad near Yolav
+            Console.WriteLine("You approach a crossroad with a sign that says left is Dry Rock and Right is Fahal");
+            Console.WriteLine("Which way would you like to go");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Press 1 to go left");
+            Console.WriteLine("Press 2 to go right");
+            char firstcrossroad = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            if (firstcrossroad == '1')
+            {
+                Console.WriteLine("You take a left turn and head to Dry Rock on a dirt road");
+
+            }
+             else if (firstcrossroad == '2')
+            {
+                Console.WriteLine("You look right and head down a cobblestone pathway");
+            }
 
         }
     }
