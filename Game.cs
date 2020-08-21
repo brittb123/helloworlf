@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection.PortableExecutable;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -10,6 +11,22 @@ namespace HelloWorld
     {
         public void Run()
         {
+
+            //Weapon damge stats
+         
+            int damage = 15;
+            int fireball = 20;
+            int lightning = 25;
+            int dagger = 15;
+
+
+            //Enemies and battle commands
+            int battle = ' ';
+            bool BattleStarted = false;
+            int goblin = ' ';
+            int goblinHealth = 100;
+
+
 
             //Starting and max level values and stats
             bool maxLevelReached = false;
@@ -24,6 +41,7 @@ namespace HelloWorld
 
             //Name input for player
             Console.Write("What is your name traveler?");
+            Console.WriteLine();
             string name = Console.ReadLine();
 
             //This variable is for health
@@ -41,12 +59,15 @@ namespace HelloWorld
             Console.WriteLine("Press 4 for a Warrior");
             Console.WriteLine("Press 5 for a Warlock");
             char input = Console.ReadKey().KeyChar;
+            while (input != '1' && input != '2' && input != '3' && input != '4' && input != '5')
+                input = Console.ReadKey().KeyChar;
             if (input == '1')
             {
                 health = 80;
                 role = "Rogue";
                 stealth = 45;
                 armor = 30;
+                damage = 15;
             }
 
             else if (input == '2')
@@ -55,6 +76,7 @@ namespace HelloWorld
                 role = "Druid";
                 stealth = 35;
                 armor = 40;
+                damage = 15;
 
              }
 
@@ -64,6 +86,7 @@ namespace HelloWorld
                 role = "Alchemist";
                 stealth = 40;
                 armor = 30;
+                damage = 25;
             }
             
             else if (input == '4')
@@ -72,6 +95,7 @@ namespace HelloWorld
                 role = "Warrior";
                 stealth = 25;
                 armor = 50;
+                damage = 20;
             }
             else if (input == '5')
             {
@@ -79,6 +103,7 @@ namespace HelloWorld
                 role = "Warlock";
                 stealth = 25;
                 armor = 15;
+                damage = 10;
             }
 
                else
@@ -101,36 +126,41 @@ namespace HelloWorld
             Console.WriteLine("Press 2 if you are a healer from a Xerus");
             Console.WriteLine("Press 3 if you a guard from out of town");
             Console.WriteLine("Press 4 if you are a hunter from the wild");
-            char backstory = Console.ReadKey().KeyChar;
+            char backstory = ' ';
+            while (backstory != '1' && backstory != '2' && backstory != '3' && backstory != '4')
+            {
+               backstory = Console.ReadKey().KeyChar;
+                if (backstory == '1')
+                {
+                    stealth += stealth + 25;
+                    coins += coins + 100;
+                }
 
-            if (backstory == '1')
-            {
-                stealth += stealth + 25;
-                coins += coins + 100;
+                else if (backstory == '2')
+                {
+                    Magic += Magic + 25;
+                    coins += coins + 150;
+                }
+
+                else if (backstory == '3')
+                {
+                    armor += armor + 20;
+                    coins += coins + 200;
+                }
+
+                else if (backstory == '4')
+                {
+                    health += health + 10;
+                    coins += coins + 50;
+                }
+
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid Choice!");
+                }
             }
 
-            else if (backstory == '2')
-            {
-                Magic += Magic + 25;
-                coins += coins + 150;
-            }
-            
-            else if (backstory == '3')
-            {
-                armor += armor + 20;
-                coins += coins + 200;
-            }
-
-            else if (backstory == '4')
-            {
-                health += health + 10;
-                coins += coins + 50;
-            }
-            
-            else
-            {
-                Console.WriteLine("Invalid Choice! Stats remain the same");
-            }
             Console.WriteLine();
 
             //Prepared for the start and check stat chart
@@ -178,6 +208,7 @@ namespace HelloWorld
 
 
             //First CrossRoad near Yolav
+            char goblinpath = ' ';
             Console.WriteLine("You approach a crossroad with a sign that says left is Dry Rock and Right is Fahal");
             Console.WriteLine("Which way would you like to go");
             Console.WriteLine("Press 1 to go right");
@@ -186,10 +217,49 @@ namespace HelloWorld
             Console.WriteLine();
             if (firstcrossroad == '1')
             {
+                
                 Console.WriteLine("You take a right turn and head to Fahal on a dirt road");
                 Console.WriteLine("As you walking down the dirt path you see a goblin walk past");
                 Console.WriteLine("The goblin turns to you and blows a giant horn as you see squads of goblins appear");
-                Console.WriteLine("There are to many of them you got to get out of here");
+                Console.WriteLine("Do you want to turn around or attempt to fight the goblins");
+                Console.WriteLine("Press 1 to fight the goblins or Press 2 to turn and leave");
+                
+                while (goblinpath != '1' && goblinpath != '2')
+                {
+                   goblinpath = Console.ReadKey().KeyChar;
+                   
+                    if (goblinpath == '1')
+                    {
+                        Console.WriteLine("You ready your weapon as you approach the road");
+                        Console.WriteLine("A goblin turns to you and moves in to battle");
+                        BattleStarted = true;
+                        while (health > 0 && goblinHealth > 0)
+                        {
+                            Console.WriteLine("You have a chance to attack one of the goblins do you take the chance");
+                            Console.WriteLine("Press 1 for a attack with your starting weapon or Press 2 to try and escape");
+                            battle = Console.ReadKey().KeyChar;
+                            if (battle == '1')
+                            {
+                                Console.WriteLine("You swing and deal 15 damage to the goblin");
+                                goblinHealth -= dagger;
+                                Console.WriteLine("The goblin turns in anger and swings a club ad hits for 5");
+                                health -= 5;
+
+
+                            }
+                        }
+                       
+                       
+
+                    }
+
+                    else if (goblinpath == '2')
+                    {
+                        Console.WriteLine(" You think their is to many and turn around to the other path");
+                    }
+                }
+
+                
             }
              else if (firstcrossroad == '2')
             {
