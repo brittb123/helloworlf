@@ -180,16 +180,16 @@ namespace HelloWorld
             //First CrossRoad near Yolav
             Console.WriteLine("You approach a crossroad with a sign that says left is Dry Rock and Right is Fahal");
             Console.WriteLine("Which way would you like to go");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Press 1 to go left");
-            Console.WriteLine("Press 2 to go right");
+            Console.WriteLine("Press 1 to go right");
+            Console.WriteLine("Press 2 to go left");
             char firstcrossroad = Console.ReadKey().KeyChar;
             Console.WriteLine();
             if (firstcrossroad == '1')
             {
-                Console.WriteLine("You take a left turn and head to Dry Rock on a dirt road");
-
+                Console.WriteLine("You take a right turn and head to Fahal on a dirt road");
+                Console.WriteLine("As you walking down the dirt path you see a goblin walk past");
+                Console.WriteLine("The goblin turns to you and blows a giant horn as you see squads of goblins appear");
+                Console.WriteLine("There are to many of them you got to get out of here");
             }
              else if (firstcrossroad == '2')
             {
