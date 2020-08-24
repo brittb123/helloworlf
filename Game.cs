@@ -20,7 +20,16 @@ namespace HelloWorld
                 return playerChoice;
             }
 
-            void PlayerStats(string name, string role, float health, int armor, int magicMeter)
+            void PlayerStats(string name, string role, int level, float health, int armor, int magicMeter, int coins)
+            {
+                Console.WriteLine("Player Name: " + name);
+                Console.WriteLine("Chosen Role: " + role);
+                Console.WriteLine("Players Level: " + level);
+                Console.WriteLine("Players health: " + health);
+                Console.WriteLine("Players armor: " + armor);
+                Console.WriteLine("Players Magic Meter: " + magicMeter);
+                Console.WriteLine("Players Wealth: " + coins);
+            }
 
             bool gameOver = false;
 
@@ -158,6 +167,7 @@ namespace HelloWorld
 
 
                 //The player stats, name, and role selected
+                 
                 Console.WriteLine("\nPlayer Name: " + name);
                 Console.WriteLine("Chosen Role: " + role);
                 Console.WriteLine("Player Health: " + health);
@@ -218,6 +228,7 @@ namespace HelloWorld
                 }
                 else if (readytostart == 'n')
                 {
+                  
                     Console.WriteLine("\nPlayer Health : " + health);
                     Console.WriteLine("Chosen Role: " + role);
                     Console.WriteLine("Players Stealth Ability: " + stealth);
@@ -262,7 +273,7 @@ namespace HelloWorld
                     else if (bountyone == '3')
                     {
 
-                        while (Yolav != '4' && Yolav != '3' && Yolav != '2' && Yolav != '1') 
+                        while (Yolav != '4') 
                         {
                             Console.Clear();
                             Console.WriteLine("You turn back and head into town square. You have may places you can visit in this town Yolav!");
@@ -279,8 +290,8 @@ namespace HelloWorld
 
                             else if (Yolav == '2')
                             {
-                                Console.WriteLine("\nYou walk a little minute to where you see 2 Pubs and a inn!");
-                                Console.WriteLine("");
+                                Console.WriteLine("\nYou walk a little minute to where you see a Pub and a inn!");
+                                Console.WriteLine("You can go to The Sleeping Weasel inn, BerryBriars Brewery");
                             }
 
                             else if (Yolav == '3')
@@ -297,8 +308,6 @@ namespace HelloWorld
 
                         }
                     }   
-
-
                 }
 
                 //First CrossRoad near Yolav
