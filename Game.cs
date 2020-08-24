@@ -11,6 +11,16 @@ namespace HelloWorld
     {
         public void Run()
         {
+            char PlayerChoices(char Choice1, char Choice2, char Choice3)
+            {
+               char playerChoice = Console.ReadKey().KeyChar;
+                Console.WriteLine("Press 1 for " + Choice1);
+                Console.WriteLine("Press 2 for " + Choice2);
+                Console.WriteLine("Press 3 for " + Choice3);
+                return playerChoice;
+            }
+
+            void PlayerStats(string name, string role, float health, int armor, int magicMeter)
 
             bool gameOver = false;
 
@@ -39,7 +49,7 @@ namespace HelloWorld
                 int dagger = 15;
                 int bow = 20;
                 bool poisoned = false;
-                int MagicMeter = 100;
+                int magicMeter = 100;
 
 
                 //Enemies and battle commands
@@ -61,7 +71,7 @@ namespace HelloWorld
                 int stealth = 10;
                 int armor = 10;
                 int coins = 150;
-                
+                int agility = 20;
 
                 //Name input for player
                 Console.Write("What is your name traveler?");
@@ -92,7 +102,8 @@ namespace HelloWorld
                     stealth = 45;
                     armor = 30;
                     damage = 15;
-                    MagicMeter = 65;
+                    magicMeter = 65;
+                    agility = 50;
                 }
 
                 else if (input == '2')
@@ -102,7 +113,8 @@ namespace HelloWorld
                     stealth = 35;
                     armor = 40;
                     damage = 15;
-                    MagicMeter = 70;
+                    magicMeter = 70;
+                    agility = 40;
 
                 }
 
@@ -113,7 +125,8 @@ namespace HelloWorld
                     stealth = 40;
                     armor = 30;
                     damage = 25;
-                    MagicMeter = 80;
+                    magicMeter = 80;
+                    agility = 35;
                 }
 
                 else if (input == '4')
@@ -123,8 +136,10 @@ namespace HelloWorld
                     stealth = 25;
                     armor = 50;
                     damage = 20;
-                    MagicMeter = 50;
+                    magicMeter = 50;
+                    agility = 30;
                 }
+
                 else if (input == '5')
                 {
                     health = 80;
@@ -132,7 +147,8 @@ namespace HelloWorld
                     stealth = 25;
                     armor = 15;
                     damage = 10;
-                    MagicMeter = 115;
+                    magicMeter = 115;
+                    agility = 20;
                 }
 
                 else
@@ -167,7 +183,7 @@ namespace HelloWorld
 
                     else if (backstory == '2')
                     {
-                        MagicMeter += MagicMeter + 25;
+                        magicMeter += magicMeter + 25;
                         coins += coins + 150;
                     }
 
@@ -202,7 +218,7 @@ namespace HelloWorld
                 }
                 else if (readytostart == 'n')
                 {
-                    Console.WriteLine("Player Health : " + health);
+                    Console.WriteLine("\nPlayer Health : " + health);
                     Console.WriteLine("Chosen Role: " + role);
                     Console.WriteLine("Players Stealth Ability: " + stealth);
                     Console.WriteLine("Players Armor: " + armor);
@@ -217,6 +233,7 @@ namespace HelloWorld
 
                 Console.WriteLine("As you leave town a man shouting about a high bounty is available.");
                 Console.WriteLine("Do you approach and listen or ignore and walk away?");
+                
                 Console.WriteLine("Press 1 to approach and listen");
                 Console.WriteLine("Press 2 to ignore and walk away");
                 Console.WriteLine("Press 3 to go back to the Town");
@@ -241,12 +258,13 @@ namespace HelloWorld
                         Console.WriteLine(" \nYou ignore the man and continue out of town on a dirt road");
                     }
 
+                    // If the player decides to go back into Yolav
                     else if (bountyone == '3')
                     {
 
-                        while (Yolav != '4')
+                        while (Yolav != '4' && Yolav != '3' && Yolav != '2' && Yolav != '1') 
                         {
-
+                            Console.Clear();
                             Console.WriteLine("You turn back and head into town square. You have may places you can visit in this town Yolav!");
                             Console.WriteLine("Press 1 for Shops around town!");
                             Console.WriteLine("Press 2 for Inns and Pubs around town!");
@@ -255,24 +273,24 @@ namespace HelloWorld
                             Yolav = Console.ReadKey().KeyChar;
                             if (Yolav == '1')
                             {
-                                Console.WriteLine("You walk to the shops center and see a blacksmith, alchemist, a magic shop, and a general stall");
+                                Console.WriteLine("\nYou walk to the shops center and see a blacksmith, alchemist, a magic shop, and a general stall");
 
                             }
 
                             else if (Yolav == '2')
                             {
-                                Console.WriteLine("You walk a little minute to where you see 2 Pubs and a inn!");
+                                Console.WriteLine("\nYou walk a little minute to where you see 2 Pubs and a inn!");
                                 Console.WriteLine("");
                             }
 
                             else if (Yolav == '3')
                             {
-                                Console.WriteLine(" You walk around the sqaure to see a wishing well, a festival, and people sitting near a campfire cooking for people");
+                                Console.WriteLine(" \nYou walk around the sqaure to see a wishing well, a festival, and people sitting near a campfire cooking for people");
                             }
 
                             else if (Yolav == '4')
                             {
-                                Console.WriteLine("You head back to the right gate and leave the town once more!");
+                                Console.WriteLine("Y\nou head back to the right gate and leave the town once more!");
                             }
 
 
@@ -284,6 +302,7 @@ namespace HelloWorld
                 }
 
                 //First CrossRoad near Yolav
+                Console.WriteLine();
                 char goblinpath = ' ';
                 Console.WriteLine("You approach a crossroad with a sign that says left is Dry Rock and Right is Fahal");
                 Console.WriteLine("Which way would you like to go");
@@ -372,7 +391,7 @@ namespace HelloWorld
                                                 Console.WriteLine("The goblins grabs you while on fire you take 5 fire damage!");
                                                 goblinHealth -= goblinHealth - 20;
                                                 health -= health - 5;
-                                                MagicMeter -= MagicMeter - 5;
+                                                magicMeter -= magicMeter - 5;
                                             }
 
                                             else if (SpellsToCast == '2')
@@ -386,7 +405,7 @@ namespace HelloWorld
                                                 Console.WriteLine("You chant more magical words as you hear crackling as the goblin gets shocked by electricity for 15 lightning damage");
                                                 Console.WriteLine("The target lost magic and refilled yours by 2!");
                                                 goblinHealth -= goblinHealth - 10;
-                                                MagicMeter += MagicMeter + 2;
+                                                magicMeter += magicMeter + 2;
                                             }
 
                                             
